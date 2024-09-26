@@ -28,6 +28,16 @@ app.get('/games/:id', (req, res) => {
     res.send(games[req.params.id - 1])
 })
 
+app.post('/games', (req, res) => {
+    games.push({
+        id: games.length + 1,
+        price: req.body.price,
+        name: req.body.name
+    })
+
+    res.end()
+})
+
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.listen(port, () => {
