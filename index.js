@@ -1,5 +1,5 @@
-const express = require('express')()
-const app = express()
+const express = require('express');
+const app = express();
 const port = 8080
 const swaggerUi = require('swagger-ui-express')
 const yamljs = require('yamljs')
@@ -64,6 +64,5 @@ app.listen(port, () => {
 })
 
 function getBaseUrl(req) {
-    return req.connection && req.connection.encrypted
-    ? 'https' : 'http' + `://${req.headers.host}`
+    return (req.connection && req.connection.encrypted ? 'https' : 'http') + `://${req.headers.host}`;
 }
