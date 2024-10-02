@@ -23,31 +23,7 @@ paths:
             summary: Get a list of all games
             description: |
                 Returns a list of all games in API
-        post:
-            requestBody:
-                description: A new game to be created
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/error'
-                        examples:
-                            Game /w+ was not added:
-                                value:
-                                    error: One or all params are missing
-                required: true
-            tags:
-                - new-game
-            responses:
-                '201':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/new-game'
-                    description: Succesfully created
-                '400':
-                    description: 'One or all params are missing. '
-            summary: Creates a game
-            description: Creates a new game
+        post: {}
     '/games/{id}':
         get:
             tags:
@@ -90,18 +66,3 @@ components:
                     type: string
             example:
                 error: Error message.
-        new-game:
-            title: Root Type for new-game
-            description: ''
-            required:
-                - price
-            type: object
-            properties:
-                name:
-                    type: string
-                price:
-                    format: float
-                    type: number
-            example:
-                name: Tetris
-                price: 0.99
